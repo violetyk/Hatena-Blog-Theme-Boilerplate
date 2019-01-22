@@ -1,9 +1,14 @@
 html,
 body {
-    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Kaku Gothic Pro', 'Meiryo', 'MS PGothic';
+    font-family: 'Noto Serif JP', sans-serif;
+    /*
+     * font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Kaku Gothic Pro', 'Meiryo', 'MS PGothic';
+     */
     color: $text;
     background-color: $background;
-    line-height: 1.6;
+    // line-height: 1.6;
+    line-height: 1.8;
+    font-weight: 200;
 }
 a {
     color: $link;
@@ -12,13 +17,14 @@ a {
     }
     &.keyword {
         text-decoration: none;
-        border-bottom: 1px dotted $border;
+        // border-bottom: 1px dotted $border;
         color: $text;
     }
 }
 h1,h2,h3,h4,h5,h6 {
     color: $text-header;
-    line-height: 1.3;
+    // line-height: 1.3;
+    line-height: 1.8;
     a {
         color: $text-header;
         text-decoration: none;
@@ -33,8 +39,11 @@ h1,h2,h3,h4,h5,h6 {
   #globalheader-container に背景色や文字色を指定することでiframeの中にも色が反映されます。
 */
 #globalheader-container {
-    background-color: $text;
-    color: $background;
+  display: none;
+    /*
+     * background-color: $text;
+     * color: $background;
+     */
 }
 
 /* container */
@@ -79,9 +88,7 @@ h1,h2,h3,h4,h5,h6 {
     }
 }
 
-/* 下記のスタイルを適用するとテーマを1カラムレイアウトにできます。
-利用するにはコメントアウトを解除してください。
-（2カラムレイアウトの場合はコメントアウト全体が不要です）
+/* -- 1column layout -- */
 
 #content-inner {
     flex-direction: column;
@@ -92,7 +99,8 @@ h1,h2,h3,h4,h5,h6 {
         width: 100%;
     }
     @media #{$mq-md} {
-        max-width: 720px;
+        // max-width: 720px;
+        max-width: 960px;
     }
 }
 #box2 {
@@ -127,8 +135,7 @@ h1,h2,h3,h4,h5,h6 {
         padding-left: 30px;
     }
 }
-
----- END 1カラム */
+/* --/ 1column layout -- */
 
 /* ヘッダ */
 #blog-title {
@@ -136,12 +143,13 @@ h1,h2,h3,h4,h5,h6 {
     text-align: center;
     @media #{$mq-sm} {
         margin: 3em 0;
-        text-align: left;
+        // text-align: left;
     }
 }
 #title {
     margin: 0;
     font-size: 1.5rem;
+    font-weight: 600;
     @media #{$mq-md} {
         font-size: 1.7rem;
     }
@@ -150,9 +158,24 @@ h1,h2,h3,h4,h5,h6 {
     }
 }
 #blog-description {
-    font-weight: normal;
+    // font-weight: normal;
+    font-weight: 600;
     font-size: .8rem;
     margin: 1em 0 0;
+}
+
+.header-nav {
+  ul {
+    text-align: center;
+  }
+  li {
+    display: inline-block;
+    width: 20%;
+    font-weight: 400;
+    a {
+      text-decoration: none;
+    }
+  }
 }
 
 /* ヘッダ画像を設定したとき */
@@ -189,7 +212,9 @@ h1,h2,h3,h4,h5,h6 {
 .entry-header {
     padding-bottom: 1em;
     margin-bottom: 2em;
-    border-bottom: 1px solid $border;
+    /*
+     * border-bottom: 1px solid $border;
+     */
     position: relative;
 }
 .date {
@@ -199,22 +224,43 @@ h1,h2,h3,h4,h5,h6 {
         color: $text-light;
         text-decoration: none;
         &:hover {
-            text-decoration: underline;
+            color: $hover;
+            // text-decoration: underline;
         }
     }
+}
+.hyphen {
+  display: none;
+}
+.date-year::after {
+  content: "年";
+}
+.date-month::after {
+  content: "月";
+}
+.date-day::after {
+  content: "日";
 }
 .entry-title {
     margin: 0 0 .3em;
     font-size: 1.5rem;
+    font-weight: 600;
     @media #{$mq-md} {
         font-size: 1.6rem;
     }
 }
 .categories {
     margin: .5em 0;
-    font-size: .9rem;
+    // font-size: .9rem;
     a {
         margin-right: .5em;
+        text-decoration: none;
+        &:hover {
+            color: $hover;
+        }
+        &:before {
+          content: "#";
+        }
     }
 }
 
@@ -248,24 +294,45 @@ h1,h2,h3,h4,h5,h6 {
     }
     h2 {
         font-size: 1.4rem;
+        font-weight: 400;
         @media #{$mq-md} {
             font-size: 1.5rem;
+        }
+
+        position: relative;
+        padding: 12px;
+        border-bottom: 2px solid;
+        border-color: #BEC1E8;
+
+        &:after {
+          position: absolute;
+          left: 0;
+          bottom: -2px;
+          z-index: 5;
+          content: '';
+          width: 20%;
+          height: 2px;
+          background-color: #505596;
         }
     }
     h3 {
         font-size: 1.2rem;
+        font-weight: 400;
         @media #{$mq-md} {
             font-size: 1.3rem;
         }
     }
     h4 {
         font-size: 1.1rem;
+        font-weight: 400;
     }
     h5 {
         font-size: 1rem;
+        font-weight: 400;
     }
     h6 {
         font-size: .9rem;
+        font-weight: 400;
     }
     ul,
     ol,
@@ -313,7 +380,8 @@ h1,h2,h3,h4,h5,h6 {
     }
     pre,
     code {
-        font-family: 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
+        // font-family: 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
+        font-family: 'Source Code Pro', monospace;
     }
     pre {
         background: $bg-light;
@@ -321,8 +389,8 @@ h1,h2,h3,h4,h5,h6 {
         white-space: pre-wrap;
         text-overflow: ellipsis;
         font-size: 100%;
-        line-height: 1.3;
-        font-size: .8rem;
+        line-height: 1.6;
+        font-size: .9rem;
         padding: 10px;
         & > code {
             margin: 0;
@@ -330,7 +398,8 @@ h1,h2,h3,h4,h5,h6 {
             white-space: pre;
             border: none;
             background-color: transparent;
-            font-family: 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
+            font-family: 'Source Code Pro', monospace;
+            // font-family: 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
         }
     }
     code {
@@ -403,7 +472,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 .comment-user-name {
     margin: 0 0 .4em 0;
-    font-weight: bold;
+    // font-weight: bold;
+    font-weight: 400;
 }
 .comment-content {
     margin: 0 0 .4em 0;
@@ -450,12 +520,14 @@ h1,h2,h3,h4,h5,h6 {
     padding-bottom: .2em;
     border-bottom: 1px solid $border;
     font-size: 1rem;
-    font-weight: bold;
+    // font-weight: bold;
+    font-weight: 400;
     a {
         color: $text;
         text-decoration: none;
         &:hover {
-            text-decoration: underline;
+            color: $hover;
+            // text-decoration: underline;
         }
     }
 }
@@ -468,7 +540,8 @@ h1,h2,h3,h4,h5,h6 {
     }
     .id {
         display: block;
-        font-weight: bold;
+        // font-weight: bold;
+        font-weight: 400;
         margin-bottom: .5em;
     }
     .profile-description {
@@ -491,7 +564,8 @@ h1,h2,h3,h4,h5,h6 {
         a {
             text-decoration: none;
             &:hover {
-                text-decoration: underline;
+                // text-decoration: underline;
+                color: $hover;
             }
         }
     }
@@ -548,7 +622,8 @@ h1,h2,h3,h4,h5,h6 {
 .page-about {
     .entry-content {
         dt {
-            font-weight: bold;
+            // font-weight: bold;
+            font-weight: 400;
             border-bottom: 1px solid $border;
             margin-bottom: .5em;
         }
@@ -568,10 +643,11 @@ h1,h2,h3,h4,h5,h6 {
         margin-bottom: 3em;
         margin-left: auto;
         margin-right: auto;
-        line-height: 1.3;
+        // line-height: 1.3;
     }
     .entry-title {
         margin: .3em auto;
+        font-weight: 600;
     }
     .entry-thumb {
         width: 80px;
@@ -584,10 +660,10 @@ h1,h2,h3,h4,h5,h6 {
     }
     .entry-description {
         margin: 0;
-        font-size: .85rem;
-        @media #{$mq-sm} {
-            font-size: .9rem;
-        }
+        // font-size: .85rem;
+        // @media #{$mq-sm} {
+            // font-size: .9rem;
+        // }
     }
     .social-buttons {
         display: block;
@@ -598,15 +674,18 @@ h1,h2,h3,h4,h5,h6 {
 
 /* footer */
 #footer {
-    margin-top: 2em;
-    padding-bottom: 2rem;
-    text-align: center;
-    font-size: .8rem;
-    color: $text-light;
-    a {
-        color: $text-light;
-    }
-    p {
-        margin: .5em auto;
-    }
+  display: none;
+    /*
+     * margin-top: 2em;
+     * padding-bottom: 2rem;
+     * text-align: center;
+     * font-size: .8rem;
+     * color: $text-light;
+     * a {
+     *     color: $text-light;
+     * }
+     * p {
+     *     margin: .5em auto;
+     * }
+     */
 }

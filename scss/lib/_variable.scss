@@ -5,16 +5,21 @@ $background: #fff;
 $bg-light: #f5f5f5;
 
 // text color
-$text: #454545;
+// $text: #454545;
+$text: #222;
 $text-light: #999;
 $text-header: #333;
 
 // link
-$link: #1487bd;
-$hover: darken($link, 10%);
+// $link: #1487bd;
+// $hover: darken($link, 10%);
+$link: $text;
+$hover: #3545F4;
 
 // border
-$border: #ddd;
+// $border: #ddd;
+$border: #4B4D5E;
+// $border: #5654A2;
 
 // button
 $btn: #fff;
